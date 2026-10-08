@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <h2 style="margin-top:0">Dataset overview</h2>
+  <p>{{ eda.n_records }} records, {{ eda.date_range[0] }} to {{ eda.date_range[1] }}.</p>
+  <div class="grid">
+    {% for title, key in [('Adulterant','by_adulterant'),('Category','by_category'),('Severity','by_severity'),('Health risk','by_health_risk')] %}
+    <div>
+      <h4>{{ title }}</h4>
+      <table>{% for k, v in eda[key].items() %}<tr><td>{{ k }}</td><td>{{ v }}</td></tr>{% endfor %}</table>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">Model performance (held-out 20% test set)</h2>
+  <table>
+    <tr><th>Target</th><th>Best model</th><th>Accuracy</th><th>Macro-F1</th><th>Baseline acc.</th></tr>
+    {% for t, s in summary.items() %}
+    <tr><td>{{ t }}</td><td>{{ s.best_model }}</td><td>{{ s.test_accuracy }}</td><td>{{ s.test_macro_f1 }}</td><td>{{ s.baseline_accuracy }}</td></tr>
+    {% endfor %}
+  </table>
+  <p class="small">A model only adds value if it beats the baseline, which always predicts the most common class.</p>
+  <div class="grid">
+    {% for t in summary %}<img src="{{ url_for('static', filename='cm_' ~ t ~ '.png') }}" alt="{{ t }} confusion matrix" style="max-width:100%">{% endfor %}
+  </div>
+</div>
+{% endblock %}

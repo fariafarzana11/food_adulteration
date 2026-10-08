@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card notice">
+  <strong>Please read:</strong> on this dataset the models perform at roughly the level of random guessing
+  (see accuracy figures under each prediction). Treat outputs as a <em>demonstration of the ML pipeline</em>,
+  not as reliable food-safety guidance.
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">Report details</h2>
+  <form id="f">
+    <div class="grid">
+      {% for field, values in options.items() %}
+      <div>
+        <label for="{{ field }}">{{ field.replace('_',' ').title() }}</label>
+        <select id="{{ field }}" name="{{ field }}" required>
+          {% for v in values %}<option>{{ v }}</option>{% endfor %}
+        </select>
+      </div>
+      {% endfor %}
+      <div>
+        <label for="detection_date">Detection Date</label>
+        <input type="date" id="detection_date" name="detection_date" required>
+      </div>
+    </div>
+    <button type="submit">Predict</button>
+  </form>
+</div>
+
+<div id="out"></div>
+
+<script>
+document.getElementById('detection_date').valueAsDate = new Date();
+document.getElementById('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  const res = await fetch('/predict', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+  const json = await res.json();
+  const out = document.getElementById('out');
+  if (!res.ok) { out.innerHTML = '<div class="card">Error: ' + json.error + '</div>'; return; }
+  out.innerHTML = Object.entries(json).map(([target, r]) => `
+    <div class="card">
+      <h3 style="margin-top:0">${target.replace('_',' ').toUpperCase()}: ${r.prediction}</h3>
+      <table>
+        ${Object.entries(r.probabilities).map(([c,p]) => `
+          <tr><td style="width:35%">${c}</td>
+          <td><div class="bar"><span style="width:${p*100}%"></span></div></td>
+          <td style="width:60px">${(p*100).toFixed(1)}%</td></tr>`).join('')}
+      </table>
+      <p class="small">Model: ${r.model} · held-out accuracy ${(r.test_accuracy*100).toFixed(1)}% ·
+      majority-class baseline ${(r.baseline_accuracy*100).toFixed(1)}%</p>
+    </div>`).join('');
+});
+</script>
+{% endblock %}

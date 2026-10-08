@@ -1,0 +1,136 @@
+{
+  "summary": {
+    "severity": {
+      "best_model": "Random Forest",
+      "cv_scores": {
+        "Baseline (most frequent)": 0.355,
+        "Logistic Regression": 0.32875000000000004,
+        "Random Forest": 0.33999999999999997,
+        "Gradient Boosting": 0.33999999999999997
+      },
+      "test_accuracy": 0.295,
+      "test_macro_f1": 0.2849,
+      "baseline_accuracy": 0.355,
+      "classes": [
+        "Minor",
+        "Moderate",
+        "Severe"
+      ]
+    },
+    "health_risk": {
+      "best_model": "Random Forest",
+      "cv_scores": {
+        "Baseline (most frequent)": 0.35750000000000004,
+        "Logistic Regression": 0.33625000000000005,
+        "Random Forest": 0.34125000000000005,
+        "Gradient Boosting": 0.33374999999999994
+      },
+      "test_accuracy": 0.37,
+      "test_macro_f1": 0.364,
+      "baseline_accuracy": 0.36,
+      "classes": [
+        "High",
+        "Low",
+        "Medium"
+      ]
+    },
+    "action_taken": {
+      "best_model": "Random Forest",
+      "cv_scores": {
+        "Baseline (most frequent)": 0.265,
+        "Logistic Regression": 0.23625000000000002,
+        "Random Forest": 0.27999999999999997,
+        "Gradient Boosting": 0.23000000000000004
+      },
+      "test_accuracy": 0.205,
+      "test_macro_f1": 0.1985,
+      "baseline_accuracy": 0.265,
+      "classes": [
+        "Fine Imposed",
+        "Investigation Launched",
+        "Product Recall",
+        "Warning Issued"
+      ]
+    }
+  },
+  "options": {
+    "product_name": [
+      "Beef",
+      "Bread",
+      "Butter",
+      "Cheese",
+      "Chicken",
+      "Honey",
+      "Juice",
+      "Milk",
+      "Wine",
+      "Yogurt"
+    ],
+    "brand": [
+      "BrandA",
+      "BrandB",
+      "BrandC",
+      "BrandD",
+      "BrandE"
+    ],
+    "category": [
+      "Bakery",
+      "Beverages",
+      "Condiments",
+      "Dairy",
+      "Meat"
+    ],
+    "adulterant": [
+      "Artificial sweeteners",
+      "Chalk",
+      "Coloring agents",
+      "Melamine",
+      "Water"
+    ],
+    "detection_method": [
+      "Chemical Analysis",
+      "Microbiological Analysis",
+      "Sensory Evaluation",
+      "Spectroscopy"
+    ]
+  },
+  "eda": {
+    "n_records": 1000,
+    "date_range": [
+      "2024-01-01",
+      "2024-06-30"
+    ],
+    "by_adulterant": {
+      "Coloring agents": 215,
+      "Chalk": 202,
+      "Artificial sweeteners": 196,
+      "Melamine": 194,
+      "Water": 193
+    },
+    "by_category": {
+      "Meat": 221,
+      "Dairy": 218,
+      "Bakery": 191,
+      "Beverages": 186,
+      "Condiments": 184
+    },
+    "by_severity": {
+      "Minor": 355,
+      "Moderate": 324,
+      "Severe": 321
+    },
+    "by_health_risk": {
+      "Low": 358,
+      "High": 325,
+      "Medium": 317
+    },
+    "by_month": {
+      "1": 172,
+      "2": 154,
+      "3": 161,
+      "4": 157,
+      "5": 196,
+      "6": 160
+    }
+  }
+}
