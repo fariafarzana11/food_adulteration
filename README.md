@@ -6,15 +6,15 @@ report using product, brand, category, adulterant, detection method and date.
 ## Structure
 ```
 food_adulteration_ml/
-├── app.py              # Flask app (UI + /predict JSON API)
-├── train.py            # preprocessing, model comparison, evaluation, saving
-├── data/               # food_adulteration_data.csv
-├── models/             # generated: *.joblib + metadata.json
-├── static/             # generated: confusion matrices + report charts
-├── notebook/           # Food_Adulteration_ML.ipynb (run in Google Colab)
-├── run.ipynb/          # run (run in Google Colab)
-├── tools/              # scripts that generated the report and notebook
-├── templates/          # base, index (predict form), dashboard
+├── app.py                               # Flask app (UI + /predict JSON API)
+├── train.py                             # preprocessing, model comparison, evaluation, saving
+├── data/                                # food_adulteration_data.csv
+├── models/                              # generated: *.joblib + metadata.json
+├── static/                              # generated: confusion matrices + report charts
+├── Food_Adulteration_ML.ipynb           # Food_Adulteration_ML.ipynb (run in Google Colab)
+├── run.ipynb/                           # run (run in Google Colab)
+├── tools/                               # scripts that generated the report and notebook
+├── templates/                           # base, index (predict form), dashboard
 └── requirements.txt
 ```
 
