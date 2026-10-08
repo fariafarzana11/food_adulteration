@@ -12,7 +12,7 @@ food_adulteration_ml/
 ├── models/             # generated: *.joblib + metadata.json
 ├── static/             # generated: confusion matrices + report charts
 ├── notebook/           # Food_Adulteration_ML.ipynb (run in Google Colab)
-├── report/             # project report (PDF and Word)
+├── run.ipynb/          # run (run in Google Colab)
 ├── tools/              # scripts that generated the report and notebook
 ├── templates/          # base, index (predict form), dashboard
 └── requirements.txt
