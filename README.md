@@ -1,4 +1,4 @@
-# Food Adulteration ML Project (Flask)
+# Food Adulteration ML Project 
 
 Predicts **severity**, **health risk** and **action taken** for a food adulteration
 report using product, brand, category, adulterant, detection method and date.
