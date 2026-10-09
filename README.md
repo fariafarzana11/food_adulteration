@@ -8,7 +8,7 @@ report using product, brand, category, adulterant, detection method and date.
 food_adulteration_ml/
 ├── app.py                               # Flask app (UI + /predict JSON API)
 ├── train.py                             # preprocessing, model comparison, evaluation, saving
-├── data/                                # food_adulteration_data.csv
+├──food_adulteration_data.csv            # food_adulteration_data.csv
 ├── models/                              # generated: *.joblib + metadata.json
 ├── static/                              # generated: confusion matrices + report charts
 ├── Food_Adulteration_ML.ipynb           # Food_Adulteration_ML.ipynb (run in Google Colab)
